@@ -177,6 +177,8 @@ X.renderer2D.prototype.render_ = function(picking, invoked) {
   // ..then the z value which is the zoom level (distance from eye)
   var _scale = _view.getValueAt(2, 3);
   
+  window.console.log(_scale);
+  
   var _pixels = this.context.getImageData(0, 0, this['width'], this['height']);
   
   var _currentSlice = 0;
@@ -224,57 +226,88 @@ X.renderer2D.prototype.render_ = function(picking, invoked) {
   }
   
   for (_y = _height; _y >= 0; _y--) {
+    // for (_x = _width * Math.max(_scale, 1); _x >= 0; _x = _x -
+    // Math.max(_scale, 1)) {
     for (_x = _width; _x >= 0; _x--) {
+      
+      // if (_x >= _width) {
+      // continue;
+      // }
       
       // the pixel index
       var _pxIndex = _x + _y * _width;
+      
+      if (_pxIndex % 40) {
+        continue;
+      }
       
       // the r-index is the pixel index * 4 since we have RGBA components
       var _rIndex = _pxIndex * 4;
       
       // check if we are in area to draw slice data
-      if ((_x >= _paddingX && _y >= _paddingY) &&
-          (_x < (_width - _paddingX) && _y < (_height - _paddingY))) {
+      // if ((_x >= _paddingX / Math.max(_scale, 1) && _y >= _paddingY) &&
+      // (_x < (_width - _paddingX) * Math.max(_scale, 1) && _y < (_height -
+      // _paddingY))) {
+      
+      // if ((_x >= _paddingX && _y >= _paddingY) &&
+      // (_x < (_width - _paddingX) && _y < (_height - _paddingY))) {
+      //        
+      //        
+      // if ((_x >= _paddingX / Math.max(_scale, 1) && _y >= _paddingY /
+      // Math.max(_scale, 1)) &&
+      // (_x < (_width - _paddingX / Math.max(_scale, 1)) && _y < (_height -
+      // _paddingY /
+      // Math.max(_scale, 1)))) {
+      //        
+      //
+      // thresholding
+      var _currentPixelValue = _sliceData[_i] / 255 * _volume.scalarRange()[1];
+      var _lowerThreshold = _volume['_lowerThreshold'];
+      var _upperThreshold = _volume['_upperThreshold'];
+      
+      if (_currentPixelValue >= _lowerThreshold &&
+          _currentPixelValue <= _upperThreshold) {
         
-        //
-        // thresholding
-        // console.log(_sliceData[_i]);
-        var _currentPixelValue = _sliceData[_i] / 255 *
-            _volume.scalarRange()[1];
-        var _lowerThreshold = _volume['_lowerThreshold'];
-        var _upperThreshold = _volume['_upperThreshold'];
+        // _rIndex = _rIndex + _scale * 4;
         
-
-
-        if (_currentPixelValue >= _lowerThreshold &&
-            _currentPixelValue <= _upperThreshold) {
-          
-          // yes we are..! draw slice data
-          _pixels.data[_rIndex] = _sliceData[_i];
-          _pixels.data[++_rIndex] = _sliceData[_i + 1];
-          _pixels.data[++_rIndex] = _sliceData[_i + 2];
-          _pixels.data[++_rIndex] = _sliceData[_i + 3];
-          
-          _i = _i + 4; // increase the slice data byte pointer
-          
-          continue;
-          
-        }
+        // yes we are..! draw slice data
+        // _rIndex = _rIndex + Math.max(_scale, 1) * 4;
+        _pixels.data[_rIndex] = _sliceData[_i];
+        _pixels.data[++_rIndex] = _sliceData[_i + 1];
+        _pixels.data[++_rIndex] = _sliceData[_i + 2];
+        _pixels.data[++_rIndex] = _sliceData[_i + 3];
+        
+        // now draw more pixels according to the current scale
+        // var _j = 1;
+        // for (_j = 1; _j < _scale; _j++) {
+        //            
+        // _pixels.data[++_rIndex] = _sliceData[_i];
+        // _pixels.data[++_rIndex] = _sliceData[_i + 1];
+        // _pixels.data[++_rIndex] = _sliceData[_i + 2];
+        // _pixels.data[++_rIndex] = _sliceData[_i + 3];
+        //            
+        // }
         
         _i = _i + 4; // increase the slice data byte pointer
         
+        continue;
+        
       }
       
-      // draw background since we are either outside a threshold or outside
-      // the
-      // pixel region
-      _pixels.data[_rIndex] = 0;
-      _pixels.data[++_rIndex] = 0;
-      _pixels.data[++_rIndex] = 0;
-      _pixels.data[++_rIndex] = 255;
+      _i = _i + 4; // increase the slice data byte pointer
       
     }
+    
+    // draw background since we are either outside a threshold or outside
+    // the
+    // pixel region
+    // _pixels.data[_rIndex] = 0;
+    // _pixels.data[++_rIndex] = 0;
+    // _pixels.data[++_rIndex] = 0;
+    // _pixels.data[++_rIndex] = 255;
+    
   }
+  // }
   
   // propagate new image data
   this.context.putImageData(_pixels, _focusX, _focusY);
