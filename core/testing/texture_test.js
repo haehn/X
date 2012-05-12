@@ -10,7 +10,7 @@ function testXtextureClassName() {
 
   t = new X.texture();
   
-  assertEquals(t.className(), 'texture');
+  assertEquals(t.className, 'texture');
   
 }
 

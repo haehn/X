@@ -11,7 +11,7 @@ function testXcolorTableClassName() {
 
   c = new X.colorTable();
   
-  assertEquals(c.className(), 'colorTable');
+  assertEquals(c.className, 'colorTable');
   
 }
 
@@ -64,9 +64,6 @@ function testXcolorTableFile() {
 function testXcolorTableAdd() {
 
   var c = new X.colorTable();
-  
-  // a fresh colorTable should not be dirty
-  assertFalse(c.dirty());
   
   // define an example color table entry
   var colorValue = 0;

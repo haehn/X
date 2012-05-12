@@ -5,13 +5,13 @@ goog.require('goog.testing.asserts');
 
 
 /**
- * Test for X.triplets.className()
+ * Test for X.triplets.className
  */
 function testXtripletsClassName() {
 
   var t = new X.triplets();
   
-  assertEquals(t.className(), 'triplets');
+  assertEquals(t.className, 'triplets');
   
 }
 
@@ -21,8 +21,6 @@ function testXtripletsClassName() {
 function testXtripletsAdd() {
 
   var t = new X.triplets();
-  // a fresh X.triplets container should be clean
-  assertFalse(t.dirty());
   
   var t0 = [1, 2, 3];
   var t1 = [4, 5, 6];
@@ -32,9 +30,6 @@ function testXtripletsAdd() {
   t.add(t0[0], t0[1], t0[2]);
   t.add(t1[0], t1[1], t1[2]);
   t.add(t2[0], t2[1], t2[2]);
-  
-  // the triplets container should be dirty now
-  assertTrue(t.dirty());
   
   // check if we can get the exact values again
   assertArrayEquals(t.get(0), t0);
@@ -90,9 +85,6 @@ function testXtripletsGet() {
   assertArrayEquals(t.get(0), t0);
   assertArrayEquals(t.get(1), t1);
   assertArrayEquals(t.get(2), t2);
-  
-  // the triplets container should be dirty now
-  assertTrue(t.dirty());
   
   // it should still throw errors on invalid ids
   exceptionThrown = false;

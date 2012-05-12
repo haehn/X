@@ -10,7 +10,7 @@ function testXfileClassName() {
   // create test file
   var f = new X.file('/dev/null');
   
-  assertEquals(f.className(), 'file');
+  assertEquals(f.className, 'file');
   
 }
 
@@ -21,9 +21,6 @@ function testXfile() {
 
   // create test file
   var f = new X.file('/dev/null');
-  
-  // we check if the new file is marked as dirty which it should be
-  assertTrue(f.dirty());
   
 }
 
