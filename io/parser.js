@@ -356,6 +356,7 @@ X.parser.prototype.reslice = function(object, datastream, sizes, min, max) {
   
   // do we have a color table?
   var _hasColorTable = object._colorTable != null;
+  var _colorTableMap = null;
   if (_hasColorTable) {
     // color table!
     _colorTableMap = object._colorTable.map;
