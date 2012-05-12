@@ -50,7 +50,7 @@ function testXcolorTableAdd() {
   c.add(colorValue, colorLabel, colorR, colorG, colorB, colorA);
   
   // .. now grab the entry using the colorValue
-  var returnedColor = c._map.get(colorValue);
+  var returnedColor = c.map.get(colorValue);
   
   assertEquals(returnedColor[0], colorLabel);
   assertEquals(returnedColor[1], colorR);
