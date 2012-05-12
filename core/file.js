@@ -66,7 +66,7 @@ X.file = function(path) {
   this._path = path;
   
   // mark as dirty since we configure a path here
-  this._dirty = true;
+  this.dirty = true;
 };
 // inherit from X.base
 goog.inherits(X.file, X.base);
@@ -94,6 +94,6 @@ X.file.prototype.setPath = function(path) {
   this._path = path;
   
   // mark as dirty
-  this._dirty = true;
+  this.dirty = true;
   
 };

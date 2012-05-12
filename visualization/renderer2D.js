@@ -261,7 +261,7 @@ X.renderer2D.prototype.update_ = function(object) {
   // LABEL MAP
   //
   if (goog.isDefAndNotNull(labelMap) && goog.isDefAndNotNull(labelMap._file) &&
-      labelMap._file._dirty) {
+      labelMap._file.dirty) {
     // a labelMap file is associated to this object and it is dirty..
     // background: we always want to parse label maps first
     
@@ -277,7 +277,7 @@ X.renderer2D.prototype.update_ = function(object) {
   // COLOR TABLE
   //
   if (goog.isDefAndNotNull(colorTable) &&
-      goog.isDefAndNotNull(colorTable._file) && colorTable._file._dirty) {
+      goog.isDefAndNotNull(colorTable._file) && colorTable._file.dirty) {
     // a colorTable file is associated to this object and it is dirty..
     
     // start loading
@@ -290,7 +290,7 @@ X.renderer2D.prototype.update_ = function(object) {
   //
   // VOLUME
   //
-  if (goog.isDefAndNotNull(file) && file._dirty) {
+  if (goog.isDefAndNotNull(file) && file.dirty) {
     // this object is based on an external file and it is dirty..
     
     // start loading..

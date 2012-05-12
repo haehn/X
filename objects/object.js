@@ -254,7 +254,7 @@ X.object = function(object) {
    */
   this._distance = 0;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 // inherit from X.base
@@ -342,7 +342,7 @@ X.object.prototype.copy_ = function(object) {
   
   this['_magicMode'] = object['_magicMode'];
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -738,7 +738,7 @@ X.object.prototype.setColor = function(r, g, b) {
   this['_color'][1] = g;
   this['_color'][2] = b;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -881,7 +881,7 @@ X.object.prototype.setCaption = function(caption) {
 
   this['_caption'] = caption;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -910,7 +910,7 @@ X.object.prototype.setVisible = function(visible) {
   
   this['_visible'] = visible;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -958,7 +958,7 @@ X.object.prototype.setOpacity = function(opacity) {
   
   this['_opacity'] = opacity;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -1070,7 +1070,7 @@ X.object.prototype.setLineWidth = function(width) {
   
   this['_lineWidth'] = width;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -1105,7 +1105,7 @@ X.object.prototype.setPointSize = function(size) {
   
   this['_pointSize'] = size;
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 

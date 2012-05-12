@@ -83,7 +83,7 @@ X.texture = function() {
   this._rawDataHeight = 0;
   
   // mark as dirty by default
-  this._dirty = true;
+  this.dirty = true;
   
 };
 // inherit from X.base
@@ -172,7 +172,7 @@ X.texture.prototype.rawData = function() {
 X.texture.prototype.setRawData = function(rawData) {
 
   this._rawData = rawData;
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -186,7 +186,7 @@ X.texture.prototype.rawDataHeight = function() {
 X.texture.prototype.setRawDataHeight = function(rawDataHeight) {
 
   this._rawDataHeight = rawDataHeight;
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -200,6 +200,6 @@ X.texture.prototype.rawDataWidth = function() {
 X.texture.prototype.setRawDataWidth = function(rawDataWidth) {
 
   this._rawDataWidth = rawDataWidth;
-  this._dirty = true;
+  this.dirty = true;
   
 };

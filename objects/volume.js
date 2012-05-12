@@ -358,7 +358,7 @@ X.volume.prototype.create_ = function() {
     }
   }
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -403,7 +403,7 @@ X.volume.prototype.modified = function() {
       }
       
       // switch from slicing to volume rendering or vice versa
-      this._dirty = true;
+      this.dirty = true;
       this._volumeRenderingOld = this['_volumeRendering'];
       
     }
@@ -579,7 +579,7 @@ X.volume.prototype.setCenter = function(center) {
 X.volume.prototype.volumeRendering_ = function(direction) {
 
   if ((!this['_volumeRendering']) ||
-      (!this._dirty && direction == this._volumeRenderingDirection)) {
+      (!this.dirty && direction == this._volumeRenderingDirection)) {
     
     // we do not have to do anything
     return;
@@ -597,7 +597,7 @@ X.volume.prototype.volumeRendering_ = function(direction) {
   // store the direction
   this._volumeRenderingDirection = direction;
   
-  this._dirty = false;
+  this.dirty = false;
   
 };
 

@@ -218,7 +218,7 @@ X.scalars.prototype.setGlArray = function(array) {
   this._glArray = array;
   
   // also, mark this dirty so the renderer can pick it up
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -239,7 +239,7 @@ X.scalars.prototype.setArray = function(array) {
   this._glArray = array;
   
   // also, mark this dirty so the renderer can pick it up
-  this._dirty = true;
+  this.dirty = true;
   
 };
 

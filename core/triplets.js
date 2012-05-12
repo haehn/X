@@ -113,7 +113,7 @@ X.triplets.prototype.add = function(a, b, c) {
   
   this.parseTriplet_(a, b, c);
   
-  this._dirty = true;
+  this.dirty = true;
   return this._triplets_.push(a, b, c) / 3;
   
 };
@@ -184,7 +184,7 @@ X.triplets.prototype.remove = function(id) {
   
   this._triplets_.splice(id, 3);
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -247,7 +247,7 @@ X.triplets.prototype.setAll = function(triplets, minA, maxA, minB, maxB, minC,
     
   }
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -260,7 +260,7 @@ X.triplets.prototype.clear = function() {
   // delete all triplets
   this._triplets_ = new Array();
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 

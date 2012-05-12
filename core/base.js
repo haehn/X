@@ -68,7 +68,7 @@ X.base = function() {
    * @type {boolean}
    * @protected
    */
-  this._dirty = false;
+  this.dirty = false;
 };
 // enable events
 goog.inherits(X.base, goog.events.EventTarget);
@@ -128,7 +128,7 @@ X.base.prototype.print = function() {
  */
 X.base.prototype.dirty = function() {
 
-  return this._dirty;
+  return this.dirty;
   
 };
 
@@ -138,7 +138,7 @@ X.base.prototype.dirty = function() {
  */
 X.base.prototype.setClean = function() {
 
-  this._dirty = false;
+  this.dirty = false;
   
 };
 

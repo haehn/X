@@ -107,7 +107,7 @@ X.colorTable.prototype.add = function(value, label, r, g, b, a) {
   
   this._map.set(value, [label, r, g, b, a]);
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 

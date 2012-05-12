@@ -98,7 +98,7 @@ X.transform.prototype.rotateX = function(angle) {
   this._matrix = this._matrix.rotate(angleInRadii, new goog.math.Vec3(0, 1, 0));
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -122,7 +122,7 @@ X.transform.prototype.rotateY = function(angle) {
   this._matrix = this._matrix.rotate(angleInRadii, new goog.math.Vec3(1, 0, 0));
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -146,7 +146,7 @@ X.transform.prototype.rotateZ = function(angle) {
   this._matrix = this._matrix.rotate(angleInRadii, new goog.math.Vec3(0, 0, 1));
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -170,7 +170,7 @@ X.transform.prototype.translateX = function(distance) {
   this._matrix = this._matrix.translate(vector);
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -194,7 +194,7 @@ X.transform.prototype.translateY = function(distance) {
   this._matrix = this._matrix.translate(vector);
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -218,7 +218,7 @@ X.transform.prototype.translateZ = function(distance) {
   this._matrix = this._matrix.translate(vector);
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -253,7 +253,7 @@ X.transform.prototype.setMatrix = function(matrix) {
   this._matrix = matrix_;
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
@@ -287,7 +287,7 @@ X.transform.prototype.flip_ = function(i, j) {
   this._matrix.setValueAt(i, j, oldValue * -1);
   this._glMatrix = new Float32Array(this._matrix.flatten());
   
-  this._dirty = true;
+  this.dirty = true;
   
 };
 
