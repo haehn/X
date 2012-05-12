@@ -224,7 +224,7 @@ X.renderer.prototype.onProgress = function(event) {
 
   if (this.progressBar) {
     
-    var _progress = event._value;
+    var _progress = event.value;
     this.progressBar.setValue(_progress * 100);
     
   }
@@ -244,7 +244,7 @@ X.renderer.prototype.onModified = function(event) {
 
   if (goog.isDefAndNotNull(event) && event instanceof X.event.ModifiedEvent) {
     
-    this.update_(event._object);
+    this.update_(event.object);
     
   }
   

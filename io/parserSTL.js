@@ -128,7 +128,7 @@ X.parserSTL.prototype.parse = function(object, data) {
   }
   
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = object;
+  modifiedEvent.object = object;
   this.dispatchEvent(modifiedEvent);
   
 };

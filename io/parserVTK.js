@@ -169,7 +169,7 @@ X.parserVTK.prototype.parse = function(object, data) {
   
   // the object should be set up here, so let's fire a modified event
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = object;
+  modifiedEvent.object = object;
   this.dispatchEvent(modifiedEvent);
   
 };

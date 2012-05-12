@@ -109,7 +109,7 @@ X.parserMGZ.prototype.parse = function(object, data, b_zipped) {
   
   // all done..
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = object;
+  modifiedEvent.object = object;
   this.dispatchEvent(modifiedEvent);
   
 };

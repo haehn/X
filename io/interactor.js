@@ -496,8 +496,8 @@ X.interactor.prototype.onMouseMovementInside_ = function(event) {
       this.hoverEnd_();
       
       var e = new X.event.HoverEvent();
-      e._x = currentMousePosition.x;
-      e._y = currentMousePosition.y;
+      e.x = currentMousePosition.x;
+      e.y = currentMousePosition.y;
       
       this.dispatchEvent(e);
       
@@ -540,10 +540,10 @@ X.interactor.prototype.onMouseMovementInside_ = function(event) {
     var e = new X.event.RotateEvent();
     
     // attach the distance vector
-    e._distance = distance;
+    e.distance = distance;
     
     // attach the angle in degrees
-    e._angle = 0;
+    e.angle = 0;
     
     // .. fire the event
     this.dispatchEvent(e);
@@ -579,7 +579,7 @@ X.interactor.prototype.onMouseMovementInside_ = function(event) {
     }
     
     // attach the distance vector
-    e._distance = distance;
+    e.distance = distance;
     
     // .. fire the event
     this.dispatchEvent(e);
@@ -595,11 +595,11 @@ X.interactor.prototype.onMouseMovementInside_ = function(event) {
     
     // set the zoom direction
     // true if zooming in, false if zooming out
-    e._in = (distance.y > 0);
+    e.zoomIn = (distance.y > 0);
     
     // with the right click, the zoom will happen rather
     // fine than fast
-    e._fast = false;
+    e.fast = false;
     
     // .. fire the event
     this.dispatchEvent(e);
@@ -756,48 +756,48 @@ X.interactor.prototype.onKey_ = function(event) {
     if (keyCode == 37) {
       // '<-' LEFT
       distance.x = 5;
-      e._up = false; // scroll direction
+      e.up = false; // scroll direction
       if (alt) {
         // for zoom, we configure the zooming behavior
-        e._up = true;
-        e._in = true;
-        e._fast = false;
+        e.up = true;
+        e.zoomIn = true;
+        e.fast = false;
       }
       
     } else if (keyCode == 39) {
       // '->' RIGHT
       distance.x = -5;
-      e._up = true; // scroll direction
+      e.up = true; // scroll direction
       if (alt) {
         // for zoom, we configure the zooming behavior
-        e._in = false;
-        e._fast = false;
+        e.zoomIn = false;
+        e.fast = false;
       }
       
     } else if (keyCode == 38) {
       // '^-' TOP
       distance.y = 5;
-      e._up = true; // scroll direction
+      e.up = true; // scroll direction
       if (alt) {
         // for zoom, we configure the zooming behavior
-        e._in = true;
-        e._fast = true;
+        e.zoomIn = true;
+        e.fast = true;
       }
       
     } else if (keyCode == 40) {
       // '-v' BOTTOM
       distance.y = -5;
-      e._up = false; // scroll direction
+      e.up = false; // scroll direction
       if (alt) {
         // for zoom, we configure the zooming behavior
-        e._in = false;
-        e._fast = true;
+        e.zoomIn = false;
+        e.fast = true;
       }
       
     }
     
     // attach the distance vector
-    e._distance = distance;
+    e.distance = distance;
     
     // .. fire the event
     this.dispatchEvent(e);

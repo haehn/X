@@ -230,7 +230,7 @@ X.parserCRV.prototype.parse = function(object, data) {
   // version - use the setter to mark the scalars dirty
   
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = object;
+  modifiedEvent.object = object;
   this.dispatchEvent(modifiedEvent);
   
 };

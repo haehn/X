@@ -151,13 +151,13 @@ X.camera.prototype.onZoom_ = function(event) {
     
   }
   
-  if (event._in) {
+  if (event.zoomIn) {
     
-    this.zoomIn(event._fast);
+    this.zoomIn(event.fast);
     
   } else {
     
-    this.zoomOut(event._fast);
+    this.zoomOut(event.fast);
     
   }
   
@@ -179,7 +179,7 @@ X.camera.prototype.onPan_ = function(event) {
     
   }
   
-  this.pan(event._distance);
+  this.pan(event.distance);
   
 };
 

@@ -55,17 +55,17 @@ function testXeventPanEvent() {
   // assign a distance
   var _x = 1;
   var _y = 2;
-  pe._distance = new goog.math.Vec2(_x, _y);
+  pe.distance = new goog.math.Vec2(_x, _y);
   
   // check the distances..
   
   // the default distance should always be 0,0
-  assertEquals(pe2._distance.x, 0);
-  assertEquals(pe2._distance.y, 0);
+  assertEquals(pe2.distance.x, 0);
+  assertEquals(pe2.distance.y, 0);
   
   // .. test for the custom distance
-  assertEquals(pe._distance.x, _x);
-  assertEquals(pe._distance.y, _y);
+  assertEquals(pe.distance.x, _x);
+  assertEquals(pe.distance.y, _y);
   
 }
 
@@ -84,25 +84,25 @@ function testXeventRotateEvent() {
   // assign a distance
   var _x = 1;
   var _y = 2;
-  re._distance = new goog.math.Vec2(_x, _y);
+  re.distance = new goog.math.Vec2(_x, _y);
   
   // check the distances..
   
   // the default distance should always be 0,0
-  assertEquals(re2._distance.x, 0);
-  assertEquals(re2._distance.y, 0);
+  assertEquals(re2.distance.x, 0);
+  assertEquals(re2.distance.y, 0);
   
   // .. test for the custom distance
-  assertEquals(re._distance.x, _x);
-  assertEquals(re._distance.y, _y);
+  assertEquals(re.distance.x, _x);
+  assertEquals(re.distance.y, _y);
   
   // assign an angle
   var _angle = 15;
-  re2._angle = _angle;
+  re2.angle = _angle;
   
   // check it
-  assertEquals(re._angle, 0); // default
-  assertEquals(re2._angle, 15);
+  assertEquals(re.angle, 0); // default
+  assertEquals(re2.angle, 15);
   
 }
 
@@ -124,16 +124,16 @@ function testXeventZoomEvent() {
   var _fast = false;
   var _fast2 = true;
   
-  ze._in = _in;
-  ze2._in = _in2;
-  ze._fast = _fast;
-  ze2._fast = _fast2;
+  ze.in = _in;
+  ze2.in = _in2;
+  ze.fast = _fast;
+  ze2.fast = _fast2;
   
   // check the assignments
-  assertTrue(ze._in);
-  assertFalse(ze2._in);
-  assertFalse(ze._fast);
-  assertTrue(ze2._fast);
+  assertTrue(ze.in);
+  assertFalse(ze2.in);
+  assertFalse(ze.fast);
+  assertTrue(ze2.fast);
   
 }
 
@@ -166,14 +166,14 @@ function testXeventHoverEvent() {
   // assign coordinates
   var _x = 1;
   var _y = 2;
-  he._x = _x;
-  he._y = _y;
+  he.x = _x;
+  he.y = _y;
   
   // check the coordinates
-  assertEquals(he._x, _x);
-  assertEquals(he._y, _y);
-  assertEquals(he2._x, 0); // default
-  assertEquals(he2._y, 0); // default
+  assertEquals(he.x, _x);
+  assertEquals(he.y, _y);
+  assertEquals(he2.x, 0); // default
+  assertEquals(he2.y, 0); // default
   
 }
 
@@ -219,7 +219,7 @@ function testXeventModifiedEvent() {
   assertEquals(me.type, me2.type);
   
   // check the className of the associated object
-  assertEquals(me._object.className, 'object');
+  assertEquals(me.object.className, 'object');
   
 
 }
@@ -238,10 +238,10 @@ function testXeventProgressEvent() {
   
   // assign a value
   var _value = 0.8;
-  pe2._value = _value;
+  pe2.value = _value;
   
   // check it
-  assertEquals(pe._value, 0);
-  assertEquals(pe2._value, _value);
+  assertEquals(pe.value, 0);
+  assertEquals(pe2.value, _value);
   
 }

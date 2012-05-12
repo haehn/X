@@ -1004,7 +1004,7 @@ X.object.prototype.file = function() {
 X.object.prototype.modified = function() {
 
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = this;
+  modifiedEvent.object = this;
   this.dispatchEvent(modifiedEvent);
   
 };

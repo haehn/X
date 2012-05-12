@@ -355,7 +355,7 @@ X.loader.prototype.addProgress = function(value) {
   }
   
   var progressEvent = new X.event.ProgressEvent();
-  progressEvent._value = this._progress_;
+  progressEvent.value = this._progress_;
   this.dispatchEvent(progressEvent);
   
 };
@@ -508,7 +508,7 @@ X.loader.prototype.parseFileCompleted = function(event) {
   // something
   setTimeout(function() {
 
-    var object = event._object;
+    var object = event.object;
     
     // the parsing is done here..
     object.file().setClean();
@@ -530,7 +530,7 @@ X.loader.prototype.parseScalarsCompleted = function(event) {
   // something
   setTimeout(function() {
 
-    var object = event._object;
+    var object = event.object;
     
     // the parsing is done here..
     object.scalars().file().setClean();
@@ -552,7 +552,7 @@ X.loader.prototype.parseColorTableCompleted = function(event) {
   // something
   setTimeout(function() {
 
-    var object = event._object;
+    var object = event.object;
     
     // the parsing is done here..
     object.colorTable()['file'].setClean();

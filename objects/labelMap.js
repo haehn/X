@@ -75,7 +75,7 @@ X.labelMap.prototype.modified = function() {
 
   // .. and fire our own modified event
   var modifiedEvent = new X.event.ModifiedEvent();
-  modifiedEvent._object = this;
+  modifiedEvent.object = this;
   this.dispatchEvent(modifiedEvent);
   
   // call the X.volumes' modified method

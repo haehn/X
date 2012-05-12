@@ -147,7 +147,7 @@ X.event.PanEvent = function() {
    * @type {!goog.math.Vec2}
    * @protected
    */
-  this._distance = new goog.math.Vec2(0, 0);
+  this.distance = new goog.math.Vec2(0, 0);
   
 };
 // inherit from goog.events.Event
@@ -171,7 +171,7 @@ X.event.RotateEvent = function() {
    * @type {!goog.math.Vec2}
    * @protected
    */
-  this._distance = new goog.math.Vec2(0, 0);
+  this.distance = new goog.math.Vec2(0, 0);
   
   /**
    * The angle in degrees to pan around the last mouse position in screen space.
@@ -179,7 +179,7 @@ X.event.RotateEvent = function() {
    * @type {!number}
    * @protected
    */
-  this._angle = 0;
+  this.angle = 0;
   
 };
 // inherit from goog.events.Event
@@ -204,7 +204,7 @@ X.event.ZoomEvent = function() {
    * @type {!boolean}
    * @protected
    */
-  this._in = false;
+  this.zoomIn = false;
   
   /**
    * The flag for the zooming speed. If TRUE, the zoom operation will happen
@@ -213,7 +213,7 @@ X.event.ZoomEvent = function() {
    * @type {!boolean}
    * @protected
    */
-  this._fast = false;
+  this.fast = false;
   
 };
 // inherit from goog.events.Event
@@ -238,7 +238,7 @@ X.event.ScrollEvent = function() {
    * @type {!boolean}
    * @protected
    */
-  this._up = false;
+  this.up = false;
   
 };
 // inherit from goog.events.Event
@@ -272,8 +272,8 @@ X.event.HoverEvent = function() {
   // call the default event constructor
   goog.base(this, X.event.events.HOVER);
   
-  this._x = 0;
-  this._y = 0;
+  this.x = 0;
+  this.y = 0;
   
 };
 // inherit from goog.events.Event
@@ -329,7 +329,7 @@ X.event.ModifiedEvent = function() {
    * @type {!X.object}
    * @protected
    */
-  this._object = new X.object();
+  this.object = new X.object();
   
 };
 // inherit from goog.events.Event
@@ -353,7 +353,7 @@ X.event.ProgressEvent = function() {
    * @type {!number}
    * @protected
    */
-  this._value = 0;
+  this.value = 0;
   
 };
 // inherit from goog.events.Event

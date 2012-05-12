@@ -261,7 +261,7 @@ X.renderer3D.prototype.onHover_ = function(event) {
 
   goog.base(this, 'onHover_', event);
   
-  this.showCaption_(event._x, event._y);
+  this.showCaption_(event.x, event.y);
   
 };
 

@@ -111,7 +111,7 @@ X.camera3D.prototype.onRotate_ = function(event) {
     
   }
   
-  this.rotate(event._distance);
+  this.rotate(event.distance);
   
 };
 

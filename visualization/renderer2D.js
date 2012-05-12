@@ -154,7 +154,7 @@ X.renderer2D.prototype.onScroll_ = function(event) {
     _dimIndex = 2;
   }
   
-  if (event._up) {
+  if (event.up) {
     
     // check if we are in the bounds
     if (_volume['_index' + _orientation] < _volume._dimensions[_dimIndex] - 1) {
