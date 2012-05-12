@@ -6,13 +6,13 @@ goog.require('goog.testing.asserts');
 
 
 /**
- * Test for X.transform.className()
+ * Test for X.transform.className
  */
 function testXtransformClassName() {
 
   var t = new X.transform();
   
-  assertEquals(t.className(), 'transform');
+  assertEquals(t.className, 'transform');
   
 }
 
@@ -50,9 +50,6 @@ function testXtransformMatrix() {
   assertArrayEquals(t.matrix().toArray(), _testMatrix.toArray());
   assertArrayEquals(t.matrix().flatten(), _testMatrixFlattened);
   
-  // the transform should be dirty now
-  assertTrue(t.dirty());
-  
 }
 
 /**
@@ -83,9 +80,6 @@ function testXtransformGlMatrix() {
   
   // compare the gl versions..
   assertObjectEquals(t.glMatrix(), _glTestMatrix);
-  
-  // the transform should be dirty now
-  assertTrue(t.dirty());
   
 }
 
@@ -121,9 +115,6 @@ function testXtransformFlipX() {
   assertEquals(flippedTestPointBaseline[2][0], flippedTestPoint
       .getValueAt(2, 0));
   
-  // the transform should be dirty now
-  assertTrue(t.dirty());
-  
 }
 
 /**
@@ -158,9 +149,6 @@ function testXtransformFlipY() {
   assertEquals(flippedTestPointBaseline[2][0], flippedTestPoint
       .getValueAt(2, 0));
   
-  // the transform should be dirty now
-  assertTrue(t.dirty());
-  
 }
 
 /**
@@ -193,9 +181,6 @@ function testXtransformFlipZ() {
       .getValueAt(1, 0));
   assertEquals(flippedTestPointBaseline[2][0], flippedTestPoint
       .getValueAt(2, 0));
-  
-  // the transform should be dirty now
-  assertTrue(t.dirty());
   
 }
 

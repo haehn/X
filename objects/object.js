@@ -670,10 +670,10 @@ X.object.prototype.setColorTable = function(colorTable) {
   
   if (goog.isString(colorTable)) {
     
-    // a string has to be converted to a new X.texture
+    // a string has to be converted to a new X.file
     var colorTableFile = colorTable;
     colorTable = new X.colorTable();
-    colorTable.setFile(colorTableFile);
+    colorTable['file'] = new X.file(colorTableFile);
     
   }
   

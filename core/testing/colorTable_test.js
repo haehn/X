@@ -1,5 +1,4 @@
 goog.require('X.base');
-goog.require('X.file');
 goog.require('X.colorTable');
 goog.require('goog.testing.jsunit');
 goog.require('goog.asserts');
@@ -29,32 +28,6 @@ function testXcolorTableId() {
   var newValue = counter.value();
   
   assertEquals(newValue, oldValue + 1);
-  
-}
-
-/**
- * Test for X.colorTable.file
- */
-function testXcolorTableFile() {
-
-  var c = new X.colorTable();
-  
-  // be default, the file should be null
-  assertEquals(c.file(), null);
-  
-  // let's try to set the file by string
-  c.setFile('/dev/null');
-  
-  // .. this should be converted internally to an X.file object
-  assertTrue(c.file() instanceof X.file);
-  
-  // let's try to set the file using X.file directly
-  var f = new X.file('/dev/null');
-  
-  c.setFile(f);
-  
-  // .. should be the same
-  assertEquals(c.file(), f);
   
 }
 

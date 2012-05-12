@@ -162,7 +162,7 @@ X.loader.prototype.loadColorTable = function(object) {
   }
   
   // get the associated file of the object
-  var filepath = object.colorTable().file().path();
+  var filepath = object.colorTable()['file'].path();
   
   // we use a simple XHR to get the file contents
   // this works for binary and for ascii files
@@ -193,7 +193,7 @@ X.loader.prototype.loadColorTable = function(object) {
   request.send(null);
   
   // add this loading job to our jobs map
-  this.jobs_().set(object.colorTable().id(), false);
+  this.jobs_().set(object.colorTable()['id'], false);
   
 };
 
@@ -555,13 +555,13 @@ X.loader.prototype.parseColorTableCompleted = function(event) {
     var object = event._object;
     
     // the parsing is done here..
-    object.colorTable().file().setClean();
+    object.colorTable()['file'].setClean();
     
     // fire the modified event
     object.modified();
     
     // mark the loading job as completed
-    this.jobs_().set(object.colorTable().id(), true);
+    this.jobs_().set(object.colorTable()['id'], true);
     
   }.bind(this), 100);
   

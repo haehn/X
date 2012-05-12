@@ -277,7 +277,7 @@ X.renderer2D.prototype.update_ = function(object) {
   // COLOR TABLE
   //
   if (goog.isDefAndNotNull(colorTable) &&
-      goog.isDefAndNotNull(colorTable._file) && colorTable._file.dirty) {
+      goog.isDefAndNotNull(colorTable['file']) && colorTable['file'].dirty) {
     // a colorTable file is associated to this object and it is dirty..
     
     // start loading

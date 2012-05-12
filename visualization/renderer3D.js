@@ -545,7 +545,7 @@ X.renderer3D.prototype.update_ = function(object) {
   // in these cases, we do not directly update the object but activate the
   // X.loader to get the externals and then let it call the update method
   if (goog.isDefAndNotNull(colorTable) &&
-      goog.isDefAndNotNull(colorTable._file) && colorTable._file.dirty) {
+      goog.isDefAndNotNull(colorTable['file']) && colorTable['file'].dirty) {
     // a colorTable file is associated to this object and it is dirty..
     
     // start loading

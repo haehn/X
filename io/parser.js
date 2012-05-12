@@ -354,6 +354,13 @@ X.parser.prototype.reslice = function(object, datastream, sizes, min, max) {
   // do we have a labelMap?
   var hasLabelMap = object._labelMap != null;
   
+  // do we have a color table?
+  var _hasColorTable = object._colorTable != null;
+  if (_hasColorTable) {
+    // color table!
+    _colorTableMap = object._colorTable.map;
+  }
+  
   // slice dimensions in scan direction
   var numberPixelsPerSlice = rowsCount * colsCount;
   
@@ -396,14 +403,13 @@ X.parser.prototype.reslice = function(object, datastream, sizes, min, max) {
         var pixelValue_g = 0;
         var pixelValue_b = 0;
         var pixelValue_a = 0;
-        if (object._colorTable) {
+        if (_hasColorTable) {
           // color table!
-          var lookupValue = object._colorTable._map.get(Math.floor(pixelValue));
+          var lookupValue = _colorTableMap.get(Math.floor(pixelValue));
           
           // check for out of range and use the last label value in this case
           if (!lookupValue) {
-            lookupValue = object._colorTable._map.get(object._colorTable._map
-                .getCount() - 1);
+            lookupValue = _colorTableMap.get(_colorTableMap.getCount() - 1);
           }
           
           pixelValue_r = 255 * lookupValue[1];
@@ -472,14 +478,13 @@ X.parser.prototype.reslice = function(object, datastream, sizes, min, max) {
         var pixelValue_g = 0;
         var pixelValue_b = 0;
         var pixelValue_a = 0;
-        if (object._colorTable) {
+        if (_hasColorTable) {
           // color table!
-          var lookupValue = object._colorTable._map.get(Math.floor(pixelValue));
+          var lookupValue = _colorTableMap.get(Math.floor(pixelValue));
           
           // check for out of range and use the last label value in this case
           if (!lookupValue) {
-            lookupValue = object._colorTable._map.get(object._colorTable._map
-                .getCount() - 1);
+            lookupValue = _colorTableMap.get(_colorTableMap.getCount() - 1);
           }
           
           pixelValue_r = 255 * lookupValue[1];
@@ -539,14 +544,13 @@ X.parser.prototype.reslice = function(object, datastream, sizes, min, max) {
         var pixelValue_g = 0;
         var pixelValue_b = 0;
         var pixelValue_a = 0;
-        if (object._colorTable) {
+        if (_hasColorTable) {
           // color table!
-          var lookupValue = object._colorTable._map.get(Math.floor(pixelValue));
+          var lookupValue = _colorTableMap.get(Math.floor(pixelValue));
           
           // check for out of range and use the last label value in this case
           if (!lookupValue) {
-            lookupValue = object._colorTable._map.get(object._colorTable._map
-                .getCount() - 1);
+            lookupValue = _colorTableMap.get(_colorTableMap.getCount() - 1);
           }
           
           pixelValue_r = 255 * lookupValue[1];
