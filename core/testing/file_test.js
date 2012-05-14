@@ -36,12 +36,12 @@ function testXfilePath() {
   var f = new X.file(path1);
   
   // the path should be set now
-  assertEquals(f.path(), path1);
+  assertEquals(f.path, path1);
   
   // set a new path
   f.setPath(path2);
   
   // the 2nd path should be set now
-  assertEquals(f.path(), path2);
+  assertEquals(f.path, path2);
   
 }

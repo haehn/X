@@ -61,39 +61,12 @@ X.file = function(path) {
    * The file path.
    * 
    * @type {?string}
-   * @protected
+   * @public
    */
-  this._path = path;
+  this['path'] = path;
   
   // mark as dirty since we configure a path here
   this.dirty = true;
 };
 // inherit from X.base
 goog.inherits(X.file, X.base);
-
-
-/**
- * Get the file path.
- * 
- * @return {?string} The file path.
- */
-X.file.prototype.path = function() {
-
-  return this._path;
-  
-};
-
-
-/**
- * Set the file path.
- * 
- * @param {?string} path The file path.
- */
-X.file.prototype.setPath = function(path) {
-
-  this._path = path;
-  
-  // mark as dirty
-  this.dirty = true;
-  
-};

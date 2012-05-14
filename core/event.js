@@ -67,10 +67,8 @@ X.event = function(type) {
   // class attributes
   
   /**
-   * The className of this class.
-   * 
-   * @type {string}
-   * @protected
+   * @inheritDoc
+   * @const
    */
   this['className'] = 'event';
   

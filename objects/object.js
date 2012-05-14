@@ -303,7 +303,7 @@ X.object.prototype.copy_ = function(object) {
   
   if (object._file) {
     // only if a file is configured
-    this._file = new X.file(new String(object._file._path).toString());
+    this._file = new X.file(new String(object._file['path']).toString());
   }
   
   this['_opacity'] = object['_opacity'];
