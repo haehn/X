@@ -43,6 +43,10 @@ goog.require('X.object');
  * 
  * @constructor
  * @extends X.object
+ * @borrows X.constructable#union as #union
+ * @borrows X.constructable#inverse as #inverse
+ * @borrows X.constructable#intersect as #intersect
+ * @borrows X.constructable#subtract as #subtract
  */
 X.cube = function() {
 
