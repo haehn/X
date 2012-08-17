@@ -42,7 +42,7 @@ goog.require('X.loadable');
  * @extends X.base
  * @mixin X.loadable
  */
-X.texture = function() {
+X.texture = function(var1, var2, var3) {
 
   //
   // call the standard constructor of X.base
@@ -79,7 +79,7 @@ X.texture = function() {
    * @type {?Object}
    * @protected
    */
-  this._rawData = null;
+  this._rawData = var1;
   
   /**
    * The width of the raw data.
@@ -87,7 +87,7 @@ X.texture = function() {
    * @type {number}
    * @protected
    */
-  this._rawDataWidth = 0;
+  this._rawDataWidth = var2;
   
   /**
    * The height of the raw data.
@@ -95,10 +95,10 @@ X.texture = function() {
    * @type {number}
    * @protected
    */
-  this._rawDataHeight = 0;
+  this._rawDataHeight = var3;
   
   // inject functionality
-  inject(this, new X.loadable()); // this object is loadable from a file
+//  inject(this, new X.loadable()); // this object is loadable from a file
   
 };
 // inherit from X.base
