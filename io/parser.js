@@ -369,7 +369,6 @@ X.parser.prototype.reslice = function(object, MRI) {
   // allocate all slices
  
   // console.log(image);
-  
   var pixelValue = 0;
   
   // loop through all slices in scan direction
@@ -430,11 +429,14 @@ X.parser.prototype.reslice = function(object, MRI) {
   // all slices are along the rows of the image
   // all rows are along the slices of the image
   // all cols are along the cols of the image
-  //  
+  // 
+  if(rowsCount = colsCount){ 
   var array_size = 4 * slices * colsCount;
   for (row = 0; row < rowsCount; row++) {
     
     var textureForCurrentSlice = new Uint8Array(array_size);
+    var textureForCurrentSlice2 = new Uint8Array(array_size);
+
     var p = 0; // just a counter
     for (z = 0; z < slices; z++) {
       for (col = 0; col < colsCount; col++) {
@@ -446,9 +448,17 @@ X.parser.prototype.reslice = function(object, MRI) {
         
         var textureStartIndex = p * 4;
         textureForCurrentSlice[textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = 255;
+        textureForCurrentSlice[textureStartIndex + 1] = value;
+        textureForCurrentSlice[textureStartIndex + 2] = value;
+        textureForCurrentSlice[textureStartIndex + 3] = 255;
+       
+        pixelValue = image[z][col][row];
+        value = 255 * (pixelValue / max);
+        
+        textureForCurrentSlice2[textureStartIndex] = value;
+        textureForCurrentSlice2[++textureStartIndex] = value;
+        textureForCurrentSlice2[++textureStartIndex] = value;
+        textureForCurrentSlice2[++textureStartIndex] = 255;
         
         p++;
         
@@ -459,42 +469,15 @@ X.parser.prototype.reslice = function(object, MRI) {
     
     currentSlice = object._slicesY._children[row];
     currentSlice._texture = pixelTexture;
+    
+    var pixelTexture2 = new X.texture(textureForCurrentSlice2, rowsCount, slices);
+    
+    currentSlice2 = object._slicesX._children[row];
+    currentSlice2._texture = pixelTexture2;
   }
   
-  // for Z
-  // all slices are along the cols of the image
-  // all rows are along the slices of the image
-  // all cols are along the rows of the image
-  //  
-  var array_size = 4 * slices * rowsCount;
-  for (col = 0; col < colsCount; col++) {
-    var textureForCurrentSlice = new Uint8Array(array_size);
-    var p = 0; // just a counter
-    for (z = 0; z < slices; z++) {
-      for (row = 0; row < rowsCount; row++) {
-        
-        pixelValue = image[z][row][col];
-          // no color table, 1-channel gray value
-          var value = 255 * (pixelValue / max);
-        
-        var textureStartIndex = p * 4;
-        textureForCurrentSlice[textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = value;
-        textureForCurrentSlice[++textureStartIndex] = 255;
-        
-        p++;
-        
-      }
-    }
-    
-    var pixelTexture = new X.texture(textureForCurrentSlice, rowsCount, slices);
-    pixelTexture._rawData = textureForCurrentSlice;
-    
-    currentSlice = object._slicesX._children[col];
-    currentSlice._texture = pixelTexture;
   }
-  
+
   X.TIMERSTOP(this._classname + '.reslice');
 
   return image;
