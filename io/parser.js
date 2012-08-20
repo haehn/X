@@ -407,7 +407,7 @@ X.parser.prototype.reslice = function(object, MRI) {
         textureForCurrentSlice[++textureStartIndex] = 255;
         
         // save the pixelValue in the 3d image data
-        image[z][row][col] = pixelValue;
+        image[z][row][col] = value;
         
         p++;
       }
@@ -442,22 +442,18 @@ X.parser.prototype.reslice = function(object, MRI) {
       for (col = 0; col < colsCount; col++) {
         
         pixelValue = image[z][row][col];
-          // check for out of range and use the last label value in this case
-          // no color table, 1-channel gray value
-          var value = 255 * (pixelValue / max);
         
         var textureStartIndex = p * 4;
-        textureForCurrentSlice[textureStartIndex] = value;
-        textureForCurrentSlice[textureStartIndex + 1] = value;
-        textureForCurrentSlice[textureStartIndex + 2] = value;
+        textureForCurrentSlice[textureStartIndex] = pixelValue;
+        textureForCurrentSlice[textureStartIndex + 1] = pixelValue;
+        textureForCurrentSlice[textureStartIndex + 2] = pixelValue;
         textureForCurrentSlice[textureStartIndex + 3] = 255;
        
         pixelValue = image[z][col][row];
-        value = 255 * (pixelValue / max);
         
-        textureForCurrentSlice2[textureStartIndex] = value;
-        textureForCurrentSlice2[++textureStartIndex] = value;
-        textureForCurrentSlice2[++textureStartIndex] = value;
+        textureForCurrentSlice2[textureStartIndex] = pixelValue;
+        textureForCurrentSlice2[++textureStartIndex] = pixelValue;
+        textureForCurrentSlice2[++textureStartIndex] = pixelValue;
         textureForCurrentSlice2[++textureStartIndex] = 255;
         
         p++;
