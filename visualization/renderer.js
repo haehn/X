@@ -196,7 +196,8 @@ X.renderer = function() {
     'PROGRESSBAR_ENABLED': true
   };
   
-  window.console.log('XTK Release 4 -- 04/12/12 -- http://www.goXTK.com');
+  window.console
+      .log('XTK Release pre8 -- 08/17/12 -- http://www.goXTK.com -- @goXTK');
   
 };
 // inherit from X.base
@@ -368,23 +369,6 @@ X.renderer.prototype.__defineGetter__('camera', function() {
 X.renderer.prototype.__defineGetter__('loadingCompleted', function() {
 
   return this._loadingCompleted;
-  
-});
-
-
-/**
- * Set the state of the initial loading flag. This can be set to false to make
- * sure the onShowtime gets executed if further loading happens after the
- * initial one.
- * 
- * @param {boolean} loadingCompleted The loading completed flag which could
- *          activate the onShowtime method, if the initial loading already
- *          happened and new loading was performed.
- */
-X.renderer.prototype.__defineSetter__('loadingCompleted', function(
-    loadingCompleted) {
-
-  this._loadingCompleted = loadingCompleted;
   
 });
 
@@ -876,6 +860,10 @@ X.renderer.prototype.render = function() {
     
     this.showProgressBar_();
     
+    // also reset the loadingCompleted flags
+    this._loadingCompleted = false;
+    this._onShowtime = false;
+    
     // let's check again in a short time
     this._readyCheckTimer = goog.Timer.callOnce(function() {
 
@@ -895,6 +883,9 @@ X.renderer.prototype.render = function() {
     // we are ready! yahoooo!
     
     // call the onShowtime function which can be overloaded
+    
+    // we need two flags here since the render loop repeats so fast
+    // that there would be timing issues
     if (!this._loadingCompleted && !this._onShowtime) {
       
       this._onShowtime = true;
@@ -926,7 +917,7 @@ X.renderer.prototype.render = function() {
   //
   
   // this starts the rendering loops
-  window.requestAnimationFrame(this.render.bind(this, this._canvas));
+  window.requestAnimationFrame(this.render.bind(this), this._canvas);
   eval("this.onRender()");
   this.render_(false, true);
   
